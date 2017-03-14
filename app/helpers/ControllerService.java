@@ -19,12 +19,6 @@ public class ControllerService extends Controller {
   }
 
   // Validate Service
-  public List<ValidationError> validateMessage(Map<String, String> listErrors) {
-    List<ValidationError> errors = new ArrayList<ValidationError>();
-    listErrors.forEach((k, v) -> errors.add(new ValidationError(k, v)));
-    return errors;
-  }
-
   public List<String> errorsMessage(Map<String, List<ValidationError>> errors) {
     List<String> bundleErrors = new ArrayList<String>();
     errors.forEach((k, v) -> {
