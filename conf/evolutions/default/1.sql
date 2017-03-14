@@ -3,16 +3,15 @@
 
 # --- !Ups
 
-create table task (
+create table login (
   id                            bigint auto_increment not null,
-  name                          varchar(255),
-  done                          tinyint(1) default 0,
-  due_date                      datetime(6),
-  constraint pk_task primary key (id)
+  username                      varchar(255),
+  password                      varchar(255),
+  constraint pk_login primary key (id)
 );
 
 
 # --- !Downs
 
-drop table if exists task;
+drop table if exists login;
 

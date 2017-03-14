@@ -2,7 +2,7 @@
  * This template takes a single argument, a String containing a
  * message to display.
  *@
-@(title: String, loginFormat: Form[formats.LoginFormat])
+@(title: String, errors: java.util.List[String])
 
 @*
  * Call the `main` template with two arguments. The first
@@ -10,21 +10,15 @@
  * argument is an `Html` object containing the body of the page.
  *@
 @main(title) {
-  @helper.form(action = routes.Login.doLogin) {
+  @helper.form(action = routes.LoginController.doLogin) {
     <input type="text" name="username">
     <input type="password" name="password">
     <input type="submit" name="login" value="Login">
   }
 
-  @loginFormat.errors.map { x =>
-    @x._2.map { y =>
-      <p>@y.message</p>
-    }
-  }
-
-  @if(loginFormat.hasErrors) {
-    @for(error <- loginFormat.errors.values) {
-      <p>@error.get(0).message</p>
+  @if(!errors.isEmpty) {
+    @errors.map{ error =>
+        <p>@error</p>
     }
   }
 }
