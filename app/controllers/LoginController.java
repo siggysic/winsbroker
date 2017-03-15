@@ -19,11 +19,11 @@ public class LoginController extends ControllerService {
   private List<String> errors = new ArrayList<String>(){};
 
   public Result login() {
-    if(isLoggedIn(sessionTopic)) {
-      return redirect("/");
-    }else {
+    // if(isLoggedIn(sessionTopic)) {
+    //   return redirect("/");
+    // }else {
       return ok(views.html.login.render(errors));
-    }
+    // }
   }
 
   public Result doLogin() {
@@ -31,7 +31,7 @@ public class LoginController extends ControllerService {
     if(loginForm.hasErrors()) {
       return badRequest(views.html.login.render(errorsMessage(loginForm.errors())));
     } else {
-      LoginModel loginResult = loginForm.get().authenticate(loginForm.get().username, loginForm.get().password);
+      LoginModel loginResult = loginForm.get().authenticate(loginForm.get().username, encrypt(loginForm.get().password));
       if(loginResult != null) {
         session(sessionTopic, loginForm.get().username);
         return ok("Logged in : " + loginForm.get());

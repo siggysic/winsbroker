@@ -9,7 +9,34 @@
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
  *@
-@main("WINSBROKER LOGIN") {
+@scale("WINSBROKER LOGIN") {
+
+  <div id="page">
+    <div class="container-fluid bg-page">
+      <div class="col-lg-4 col-sm-6 col-md-5 col-xs-12 col-centered">
+        <h1 class="logo-login">WINSBROKER</h1>
+        @helper.form(action = routes.LoginController.doLogin) {
+          <div class="block-login">
+            <div class="input-login">
+              <p>Username / Email</p>
+              <input type="text" name="usermane" class="form-control user">
+            </div>
+            <div class="input-login">
+              <p>Password</p>
+              <input type="password" name="password" class="form-control pass">
+            </div>
+            <div class="input-login" style="padding-top: 0;">
+              <a href="#">Forgot your password ?</a>
+            </div>
+            <button type="submit" class="btn">Log in</a>
+          </div>
+        }
+      </div>
+    </div><!--container-fluid-->
+  </div>
+
+
+
   @helper.form(action = routes.LoginController.doLogin) {
     <input type="text" name="username">
     <input type="password" name="password">

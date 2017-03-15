@@ -1,0 +1,49 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>@title</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalabel=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+        <link href="@routes.Assets.versioned("admin/css/bootstrap.min.css")" rel="stylesheet">
+        <link href="@routes.Assets.versioned("admin/css/global.css")" rel="stylesheet" media="all">
+        <link href="@routes.Assets.versioned("admin/css/screen.css")" rel="stylesheet">
+
+        <script src="@routes.Assets.versioned("admin/js/jquery-1.11.3.min.js")" charset="UTF-8"></script>
+        <script src="@routes.Assets.versioned("admin/js/bootstrap.min.js")"></script>
+
+        <style type="text/css">
+          .container-fluid {
+            padding-right: 0px;
+            padding-left: 0px;
+          }
+          html {
+            height:100%;
+          }
+          body {
+            height:100%;
+            min-height:100%;
+            background: #f7f7f7;
+            margin: 0 auto;
+          }
+          #page {
+            height:100%;
+            min-height:100%;
+
+          }
+          .bg-page {
+            height:100%;
+            min-height:100%;
+
+          }
+        </style>
+
+    </head>
+    <body>
+        @content
+    </body>
+</html>
