@@ -22,14 +22,14 @@ public class LoginController extends ControllerService {
     if(isLoggedIn(sessionTopic)) {
       return redirect("/");
     }else {
-      return ok(views.html.login.render("Login", errors));
+      return ok(views.html.login.render(errors));
     }
   }
 
   public Result doLogin() {
     Form<LoginModel> loginForm = formFactory.form(LoginModel.class).bindFromRequest();
     if(loginForm.hasErrors()) {
-      return badRequest(views.html.login.render("Login", errorsMessage(loginForm.errors())));
+      return badRequest(views.html.login.render(errorsMessage(loginForm.errors())));
     } else {
       LoginModel loginResult = loginForm.get().authenticate(loginForm.get().username, loginForm.get().password);
       if(loginResult != null) {
@@ -38,7 +38,7 @@ public class LoginController extends ControllerService {
       }else {
         List<String> errors = new ArrayList<String>();
         errors.add("Username or Password is wrong..");
-        return ok(views.html.login.render("Login", errors));
+        return ok(views.html.login.render(errors));
       }
     }
   }

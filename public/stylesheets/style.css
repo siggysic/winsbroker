@@ -1,0 +1,318 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ margin:0; padding:0;}
+
+body {
+	margin:0;
+	padding:0;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:16px;
+	line-height:25px;
+	color: #6b6b6b;
+}
+
+/*----- FONT -----//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+@font-face {
+	font-family: 'Conv_kit55f-webfont';
+	src: url('fonts/kit55f-webfont.eot');
+	src: local('☺'), url('fonts/kit55f-webfont.woff') format('woff'), url('fonts/kit55f-webfont.ttf') format('truetype'), url('fonts/kit55f-webfont.svg') format('svg');
+	font-weight: normal; font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_kit75p-webfont';
+	src: url('fonts/kit75p-webfont.eot');
+	src: local('☺'), url('fonts/kit75p-webfont.woff') format('woff'), url('fonts/kit75p-webfont.ttf') format('truetype'), url('fonts/kit75p-webfont.svg') format('svg');
+	font-weight: normal; font-style: normal;
+}
+@font-face {
+	font-family: 'Arial Rounded MT Bold';
+	src: url('fonts/arial-rounded-mt-bold.eot');
+	src: local('☺'),url('fonts/arial-rounded-mt-bold.ttf') format('truetype');
+	font-weight: normal; font-style: normal;
+}
+
+.cleaner {clear:both; width:100%; height:0px;}
+.h30{clear:both; width:100%; height:30px;}
+.h20{clear:both; width:100%; height:20px;}
+.h10{clear:both; width:100%; height:10px;}
+.space20{ padding-left:20px;}
+.space30{ padding-left:30px;}
+.space40{ padding-left:40px;}
+
+
+
+/*----- CSS -----//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/********************************************************************Wrapper*/
+#wrapper{
+	width:1170px; margin:auto; padding:0;
+}
+
+/********************************************************************Header*/
+
+#header{
+	width:1170px;
+	margin:auto;
+	font-family: 'Conv_kit55f-webfont';
+	padding: 20px 0 0 0;
+}
+
+.header-left{
+	width:25%;
+	display:inline-block;
+	padding-top: 15px;
+}
+
+.header-left a{
+ 	color: #6b6b6b;
+ 	text-decoration: none;
+ 	font-size: 72px;
+}
+
+.header-right{
+	width:74%;
+	display:inline-block;
+	vertical-align:top;
+	margin-top: 5px;
+	font-size:18px;
+}
+
+.header-right .tel-urgent{
+	padding-left: 65px;
+	background:url(../images/icon-car-2.png) 0 5px no-repeat;
+	float: right;
+	color: #3eafaa;
+	padding-bottom: 5px;
+}
+.header-right .tel-urgent p{
+	font-size: 33px;
+	color: #ff0024;
+	line-height: 11px;
+}
+
+/********************************************************************Main-Menu*/
+#main-menu{
+	width:1170px;
+	margin:auto;
+	display:block;
+	font-family: 'Conv_kit55f-webfont';
+	f
+}
+
+#main-menu ul {
+	margin-top: 25px;
+	display: block;
+	width: 1170px;
+}
+
+#main-menu ul li {
+	display: inline-block;
+	list-style: none;
+	text-align:center;
+	width: 194px;
+    padding: 7px 0px;
+    margin: 0 -2px;
+
+}
+
+#main-menu ul li a{
+	font-size:24px;
+	text-decoration:none;
+	color: #6b6b6b;
+
+}
+
+#main-menu ul li p{
+	font-size:23px;
+}
+
+#main-menu ul li:hover ,#main-menu ul li.active{
+	background: #3eafaa;
+	color:#fff;
+    -webkit-animation: tada 800ms linear;
+}
+#main-menu ul li:hover  a,#main-menu ul li.active a{
+	color:#fff;
+}
+
+/********************************************************************Slide*/
+
+.slide{}
+
+.slide img{
+	width:100%;
+}
+
+
+/********************************************************************Content*/
+#content{
+	width:1170px;
+	margin:auto;
+	font-family: 'Conv_kit55f-webfont';
+	font-size:20px;
+	padding: 20px 0;
+
+}
+
+/********************************************************************Content-left*/
+
+.content-left{
+	width:25%;
+	display:inline-block;
+	margin:auto;
+}
+.content-left .form-check{ border: 1px solid #dddddd; padding: 25px 15px;}
+.content-left .form-check p{font-size: 27px;}
+.content-left .form-check ul{
+	list-style: none;
+	display: block;
+}
+.content-left .form-check ul li{
+	display: inline-block;
+	padding: 15px 1px;
+}
+.content-left .form-check select{
+	display: block;
+	width: 100%;
+	border: none;
+	font-family: 'Conv_kit55f-webfont';
+	font-size: 18px;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 10px; 
+	color: #6b6b6b;
+}
+.content-left .form-check button{
+	margin: auto;
+	display: block;
+	background: #3eafaa;
+	border:none;
+	font-family: 'Conv_kit55f-webfont';
+	font-size: 20px;
+	color: #fff;
+	padding: 5px 15px;
+	margin: 30px auto auto auto;
+}
+.content-left .form-check button:hover{ -webkit-animation: tada 800ms linear; }
+.content-left .check-post{
+	display: block;
+	width: 100%;
+	border: 1px solid #3eafaa;
+	background: #fff;
+	margin-top: 10px;
+	text-align: center;
+	text-decoration: none;
+}
+.content-left .check-post:hover{ -webkit-animation: tada 800ms linear; }
+.content-left .check-post p{
+	display: block;
+	width: 100%;
+	background: #3eafaa;
+	color: #fff;
+	font-size: 30px;
+	padding: 10px 0;
+
+}
+.content-left .line-add{
+	background: url(../images/icon-line.png) left top no-repeat;
+	padding-left: 115px;
+	height: 110px;
+	margin: 10px auto;
+}
+.content-left .line-add p{
+	font-family: 'Arial Rounded MT Bold';
+	font-size: 25px;
+	padding-top: 40px;
+}
+.content-left .line-add span{
+	display: block;
+    padding-top: 19px;
+    width: 100%;
+    text-align: center;
+}
+
+    
+/********************************************************************Content-right*/
+.content-right{
+	width:74%;
+	display:inline-block;
+	margin:auto;
+	vertical-align:top;
+	padding-left: 5px;
+}
+
+.content-right .block-menu { width: 32%; display: inline-block; margin: 10px 4px 0 4px;  }
+.content-right .block-menu a{ 
+	display: block; 
+	width: 100%; 
+	position: relative; 
+	text-decoration: none; 
+	border: 1px solid #ddd;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 100ms ease;
+}
+.content-right .block-menu img{ width: 100%;}
+.content-right .block-menu a div{ display: block; position: absolute; width: 100%; background: #3eafaa; color: #fff; bottom: 0; left: 0; vertical-align: middle; height: 40px;}
+.content-right .block-menu a:hover div{ height: 188px; transition: all 100ms ease;}
+.content-right .block-menu a div p{ margin: 7px 5px; }
+/********************************************************************Footer*/
+
+#footer{
+	width:1170px;
+	margin:auto;
+	background:#557b83;
+	font-family: 'Conv_kit55f-webfont';
+	color:#fff;
+	padding:10px 0;
+}
+#footer div{vertical-align: middle; display: inline-block;    margin: 0 10px;}
+#footer .block-1{
+	padding-left:10px; 
+}
+#footer .block-1 img{width: 40px;}
+#footer .block-2{ 
+	padding-left: 80px; 
+	font-size: 30px; 
+	background:url(../images/logo-number.png) left top no-repeat;
+	height: 70px;
+}
+#footer .block-3{ 
+	padding-left: 80px; 
+	font-size: 16px; 
+	background:url(../images/icon-home.png) left top no-repeat;
+	background-size: 70px;
+	height: 70px;
+}
+#footer .block-4 .icon{
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	
+}
+#footer .block-4 .icon.fb{
+	background:url(../images/icon-facebook.png) left top no-repeat;
+	background-size: 100%;
+}
+#footer .block-4 .icon.line{
+	background:url(../images/icon-line-2.png) left top no-repeat;
+	background-size: 100%;
+}
+#footer .block-4  iframe{ height: 24px; padding-left: 5px; }
+#footer .block-4  p{margin-bottom: 5px;}
+#footer .block-4  .tel{
+	padding-left: 35px;
+	background:url(../images/icon-phone.png) left top no-repeat;
+	background-size: 30px;
+	line-height: 30px;
+}
+#footer .block-4  .email{
+	padding-left: 35px;
+	background:url(../images/icon-email.png) left top no-repeat;
+	background-size: 30px;
+	line-height: 30px;
+}
+

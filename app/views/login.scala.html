@@ -2,14 +2,14 @@
  * This template takes a single argument, a String containing a
  * message to display.
  *@
-@(title: String, errors: java.util.List[String])
+@(errors: java.util.List[String])
 
 @*
  * Call the `main` template with two arguments. The first
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
  *@
-@main(title) {
+@main("WINSBROKER LOGIN") {
   @helper.form(action = routes.LoginController.doLogin) {
     <input type="text" name="username">
     <input type="password" name="password">
