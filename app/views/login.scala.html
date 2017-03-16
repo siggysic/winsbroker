@@ -10,7 +10,6 @@
  * argument is an `Html` object containing the body of the page.
  *@
 @scale("WINSBROKER LOGIN") {
-
   <div id="page">
     <div class="container-fluid bg-page">
       <div class="col-lg-4 col-sm-6 col-md-5 col-xs-12 col-centered">
@@ -19,7 +18,7 @@
           <div class="block-login">
             <div class="input-login">
               <p>Username / Email</p>
-              <input type="text" name="usermane" class="form-control user">
+              <input type="text" name="username" class="form-control user">
             </div>
             <div class="input-login">
               <p>Password</p>
@@ -35,17 +34,25 @@
     </div><!--container-fluid-->
   </div>
 
-
-
-  @helper.form(action = routes.LoginController.doLogin) {
-    <input type="text" name="username">
-    <input type="password" name="password">
-    <input type="submit" name="login" value="Login">
-  }
-
   @if(!errors.isEmpty) {
-    @errors.map{ error =>
-        <p>@error</p>
-    }
+    <div class="modal fade" id="error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          @errors.map{ error =>
+            <!-- Modal -->
+            <div class="modal-body">
+              @error
+            </div>
+          }
+          <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $("#error").modal('show');
+    </script>
   }
 }

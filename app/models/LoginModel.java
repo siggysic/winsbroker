@@ -22,7 +22,9 @@ public class LoginModel extends Model {
   @Constraints.Required(message = "Password is required")
   public String password;
 
-  public Finder<Long, LoginModel> find = new Finder<Long,LoginModel>(LoginModel.class);
+  public String permission;
+
+  public Finder<Long, LoginModel> find = new Finder<Long, LoginModel>(LoginModel.class);
 
   public List<LoginModel> findAll() {
     return find.all();

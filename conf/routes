@@ -11,3 +11,6 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 # Login module
 GET     /login                     controllers.LoginController.login
 POST    /login                     controllers.LoginController.doLogin
+
+# Test module
+POST    /test/:id                      controllers.LoginController.test(id: Long)

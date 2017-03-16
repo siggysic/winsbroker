@@ -60,6 +60,9 @@ body{
 .input-login .form-control.pass:focus{     background: url(../images/pass_hover.png)10px 10px no-repeat; }
 .input-login a{ color:#6c6c6b; text-decoration: none; font-size: 18px  }
 .input-login a:hover{color:#519ffb;}
-.block-login .btn{ background: #519ffb; color: #fff; padding: 2px 30px; margin-top: 25px; border:2px solid #519ffb;font-family: 'Conv_kit75p-webfont'; font-size: 24px; }
-.block-login .btn:hover{ background: #fff; color: #519ffb; }
+.btn{ background: #519ffb; color: #fff; padding: 2px 30px; margin-top: 25px; border:2px solid #519ffb;font-family: 'Conv_kit75p-webfont'; font-size: 24px; }
+.btn:hover{ background: #fff; color: #519ffb; }
+.modal-body{ padding: 5px; text-align: center; font-size: 30px;  }
+.modal-footer{ padding: 5px; border:none;     text-align: center;}
+.modal-dialog {margin: 15% auto;    width: 400px;}
 
