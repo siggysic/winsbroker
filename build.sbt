@@ -1,4 +1,4 @@
-name := """java-play-project"""
+name := """winsbroker"""
 
 version := "1.0-SNAPSHOT"
 
