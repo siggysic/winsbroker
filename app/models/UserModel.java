@@ -8,8 +8,8 @@ import play.data.format.*;
 import play.data.validation.*;
 
 @Entity
-@Table(name = "login")
-public class LoginModel extends Model {
+@Table(name = "users")
+public class UserModel extends Model {
 
   @Id
   @Constraints.Min(10)
@@ -24,13 +24,23 @@ public class LoginModel extends Model {
 
   public String permission;
 
-  public Finder<Long, LoginModel> find = new Finder<Long, LoginModel>(LoginModel.class);
+  public static Finder<Long, UserModel> find = new Finder<Long, UserModel>(UserModel.class);
 
-  public List<LoginModel> findAll() {
+  public static List<UserModel> findAll() {
     return find.all();
   }
 
-  public LoginModel authenticate(String user, String pass) {
+  public static UserModel findUsername(String user) {
+    return find.where()
+      .eq("username", user)
+      .findUnique();
+  }
+
+  public static UserModel findUserById(Long id) {
+    return find.byId(id);
+  }
+
+  public static UserModel authenticate(String user, String pass) {
     return find.where()
       .eq("username", user)
       .eq("password", pass)
