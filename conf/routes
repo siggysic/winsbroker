@@ -10,11 +10,18 @@ GET     /assets/*file              controllers.Assets.versioned(path="/public", 
 
 # Login module
 GET     /login                     controllers.UserController.login
-GET     /logout                     controllers.UserController.logout
+GET     /logout                    controllers.UserController.logout
 POST    /login                     controllers.UserController.doLogin
 POST    /users                     controllers.UserController.addUser
+POST    /users/forgot              controllers.UserController.forgotPassword
+PUT     /users/reset               controllers.UserController.resetPassword
 PUT     /users/:id                 controllers.UserController.updateUser(id: Long)
 DELETE  /users/:id                 controllers.UserController.deleteUser(id: Long)
+
+# News module
+GET     /news                      controllers.NewsController.news
+POST    /news                      controllers.NewsController.addNews
+PUT     /news/:id                  controllers.NewsController.updateNews(id: Long)
 
 # Test module
 POST    /test/:id                  controllers.UserController.test(id: Long)

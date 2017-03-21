@@ -7,6 +7,7 @@ create table news (
   id                            bigint auto_increment not null,
   topic                         varchar(255),
   content                       varchar(255),
+  image                         varchar(255),
   constraint pk_news primary key (id)
 );
 
