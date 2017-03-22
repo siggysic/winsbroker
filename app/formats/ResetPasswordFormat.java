@@ -6,30 +6,18 @@ public class ResetPasswordFormat {
 
   @Constraints.Required(message = "Username is required")
   @Constraints.Email(message = "Username is not an email")
+  @Constraints.MinLength(value = 5, message = "Username must be size more than 5")
+  @Constraints.MaxLength(value = 20, message = "Username must be size less than 20")
   public String username;
 
   @Constraints.Required(message = "Password is required")
-  public String password;
-
-  @Constraints.Required(message = "New password is required")
+  @Constraints.MinLength(value = 5, message = "Password must be size more than 5")
+  @Constraints.MaxLength(value = 20, message = "Password must be size less than 20")
   public String new_password;
 
-  @Constraints.Required(message = "New password 2 is required")
+  @Constraints.Required(message = "Password is required")
+  @Constraints.MinLength(value = 5, message = "Password must be size more than 5")
+  @Constraints.MaxLength(value = 20, message = "Password must be size less than 20")
   public String new_match_password;
 
-  // public void setUsername(String username) {
-  //   this.username = username;
-  // }
-  //
-  // public void setPassword(String password) {
-  //   this.password = password;
-  // }
-  //
-  // public String getUsername() {
-  //   return username;
-  // }
-  //
-  // public String getPassword() {
-  //   return password;
-  // }
 }

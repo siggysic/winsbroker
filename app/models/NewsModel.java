@@ -22,7 +22,7 @@ public class NewsModel extends Model {
   @Constraints.Required(message = "Content is required")
   public String content;
 
-  // @Constraints.Required(message = "Content is required")
+  // @Constraints.Required(message = "Image is required")
   public String image;
 
   public static Finder<Long, NewsModel> find = new Finder<Long, NewsModel>(NewsModel.class);

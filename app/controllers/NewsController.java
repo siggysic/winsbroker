@@ -62,7 +62,7 @@ public class NewsController extends ControllerService {
   }
 
   public Result updateNews(Long id) {
-    NewsModel.findNewsById(id);
+    NewsModel newsForm = NewsModel.findNewsById(id);
     return ok();
   }
 

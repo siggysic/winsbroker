@@ -11,6 +11,7 @@ GET     /assets/*file              controllers.Assets.versioned(path="/public", 
 # Login module
 GET     /login                     controllers.UserController.login
 GET     /logout                    controllers.UserController.logout
+GET     /users/forgot/:id          controllers.UserController.verifyPassword(id: String)
 POST    /login                     controllers.UserController.doLogin
 POST    /users                     controllers.UserController.addUser
 POST    /users/forgot              controllers.UserController.forgotPassword

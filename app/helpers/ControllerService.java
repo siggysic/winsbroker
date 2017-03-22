@@ -21,13 +21,15 @@ import javax.crypto.spec.SecretKeySpec;
 public class ControllerService extends Controller {
 
   @Inject ConfigService config;
+  public String sessionUsername = "username";
+  public String sessionPermission = "permission";
 
   // Login Service
-  public Boolean isLoggedIn(String head) {
-    if(session(head) != null) {
-      return true;
+  public Result isLoggedIn() {
+    if(session(sessionUsername) != null) {
+      return ok();
     }else {
-      return false;
+      return redirect("/");
     }
   }
 

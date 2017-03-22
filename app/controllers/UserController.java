@@ -5,7 +5,11 @@ import helpers.ControllerService;
 import formats.ResetPasswordFormat;
 import formats.ForgotPasswordFormat;
 
+import java.util.Map;
+import java.util.UUID;
+import java.util.Date;
 import java.util.List;
+import java.util.HashMap;
 import java.util.ArrayList;
 
 import javax.inject.*;
@@ -20,16 +24,13 @@ public class UserController extends ControllerService {
 
   @Inject FormFactory formFactory;
   @Inject MailerClient mailerClient;
-  private String sessionUsername = "username";
-  private String sessionPermission = "permission";
   private List<String> errors = new ArrayList<String>(){};
+  private Map<String,String> maps = new HashMap(){};
 
+  // @Security.Authenticated(Secured.class)
   public Result login() {
-    if(isLoggedIn(sessionUsername)) {
-      return redirect("/");
-    }else {
-      return ok(views.html.login.render(errors, ""));
-    }
+    if(session(sessionUsername) != null) return redirect("/");
+    else return ok(views.html.login.render(errors, ""));
   }
 
   public Result logout() {
@@ -40,6 +41,7 @@ public class UserController extends ControllerService {
   public Result doLogin() {
     Form<UserModel> loginForm = formFactory.form(UserModel.class).bindFromRequest();
     if(loginForm.hasErrors()) {
+      session().clear();
       return badRequest(views.html.login.render(errorsMessage(loginForm.errors()), loginForm.data().get("username")));
     }else {
       UserModel loginResult = loginForm.get().authenticate(loginForm.get().username, encrypt(loginForm.get().password));
@@ -49,6 +51,7 @@ public class UserController extends ControllerService {
         flash("loggedin", "Login success.");
         return ok(views.html.index.render());
       }else {
+        session().clear();
         errors.add("Username or Password is wrong..");
         return ok(views.html.login.render(errors, loginForm.data().get("username")));
       }
@@ -107,24 +110,20 @@ public class UserController extends ControllerService {
   }
 
   public Result resetPassword() {
-    Form<UserModel> loginForm = formFactory.form(UserModel.class).bindFromRequest();
-    if(loginForm.hasErrors()) {
+    Form<ResetPasswordFormat> resetForm = formFactory.form(ResetPasswordFormat.class).bindFromRequest();
+    if(resetForm.hasErrors()) {
       return badRequest();
     }else {
-      UserModel loginResult = loginForm.get().authenticate(loginForm.get().username, encrypt(loginForm.get().password));
-      if(loginResult != null) {
-        Form<ResetPasswordFormat> resetForm = formFactory.form(ResetPasswordFormat.class).bindFromRequest();
-        if(resetForm.hasErrors()) {
-          return badRequest();
-        }else if(resetForm.get().new_password.equals(resetForm.get().new_match_password)) {
-          loginResult.password = encrypt(resetForm.get().new_password);
-          loginResult.update();
-          return ok();
-        }else {
-          return badRequest();
-        }
+      UserModel userResult = UserModel.findUsername(resetForm.get().username);
+      if(userResult != null && resetForm.get().new_password.equals(resetForm.get().new_match_password)) {
+        userResult.password = encrypt(resetForm.get().new_password);
+        userResult.update();
+        return ok();
+      }else if(!resetForm.get().new_password.equals(resetForm.get().new_match_password)) {
+        errors.add("Passwords does not match.");
+        return badRequest();
       }else {
-        errors.add("Username or Password is wrong..");
+        errors.add("Username not found.");
         return badRequest();
       }
     }
@@ -137,12 +136,49 @@ public class UserController extends ControllerService {
     }else {
       UserModel uniqueUser = UserModel.findUsername(forgotForm.get().username);
       if(uniqueUser != null) {
-        sendEmail();
+        Form<UrlModel> urlForm = formFactory.form(UrlModel.class);
+        String url = UUID.randomUUID().toString();
+        Long time = new Date().getTime();
+        maps.put("token", url);
+        maps.put("time_verify", time.toString());
+        UrlModel urls = urlForm.bind(maps).get();
+        try {
+          urls.save();
+          sendEmail(uniqueUser.username, "http://localhost:9000/users/forgot/" + url);
+        }catch(Exception e) {
+          return badRequest("Cannot create verify url.");
+        }
         return ok();
       }else {
         return badRequest();
       }
     }
+  }
+
+  public Result verifyPassword(String tokenVerify) {
+    UrlModel urlModel = UrlModel.findToken(tokenVerify);
+    if(urlModel != null) {
+      if(expireTime(Long.parseLong(urlModel.time_verify))) {
+        return ok(views.html.login.render(errors, ""));
+      }else {
+        return badRequest("Token has expired time.");
+      }
+    }else {
+      return badRequest("Token not found.");
+    }
+  }
+
+  private void sendEmail(String user, String link) {
+    Email email = new Email()
+    .setSubject("Simple email")
+    .setFrom("nattapol.s@dotography.com")
+    .addTo("siggysic@gmail.com")
+    .setBodyHtml("<html><body><p>Email : " + user + "</p><p>Link to reset your password : <a href=" + link + ">Click here</a></p></body></html>");
+    mailerClient.send(email);
+  }
+
+  private Boolean expireTime(Long date) {
+    return new Date().getTime() <= date + (30 * 60000);
   }
 
   public Result test(Long id) {
@@ -152,16 +188,6 @@ public class UserController extends ControllerService {
     form2.get().save();
     System.out.println(TestOneToMany.findTest(id).mto);
     return ok();
-  }
-
-  private void sendEmail() {
-    String cid = "1234";
-    Email email = new Email()
-      .setSubject("Simple email")
-      .setFrom("nattapol.s@dotography.com")
-      .addTo("siggysic@gmail.com")
-      .setBodyText("A text message");
-    mailerClient.send(email);
   }
 
 }

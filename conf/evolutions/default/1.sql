@@ -24,6 +24,13 @@ create table test_one_to_many (
   constraint pk_test_one_to_many primary key (id)
 );
 
+create table urls (
+  id                            bigint auto_increment not null,
+  token                         varchar(255),
+  time_verify                   varchar(255),
+  constraint pk_urls primary key (id)
+);
+
 create table users (
   id                            bigint auto_increment not null,
   username                      varchar(255),
@@ -46,6 +53,8 @@ drop table if exists news;
 drop table if exists test_many_to_one;
 
 drop table if exists test_one_to_many;
+
+drop table if exists urls;
 
 drop table if exists users;
 
