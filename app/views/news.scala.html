@@ -1,0 +1,10 @@
+@(errors: java.util.List[String])
+
+@main("WINSBROKER NEWS") {
+  @helper.form(action = routes.NewsController.addNews, 'enctype -> "multipart/form-data") {
+    <input type="file" accept=".jpg, .png, .bmp" name="image">
+    <input type="text" name="topic">
+    <input type="text" name="content">
+    <p><input type="submit"></p>
+  }
+}

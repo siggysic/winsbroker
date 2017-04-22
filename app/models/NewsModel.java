@@ -4,6 +4,7 @@ import java.util.*;
 import javax.persistence.*;
 
 import com.avaje.ebean.Model;
+
 import play.data.format.*;
 import play.data.validation.*;
 
@@ -21,6 +22,13 @@ public class NewsModel extends Model {
   @Constraints.Required(message = "Content is required")
   public String content;
 
-  public Finder<Long, NewsModel> find = new Finder<Long, NewsModel>(NewsModel.class);
+  // @Constraints.Required(message = "Image is required")
+  public String image;
+
+  public static Finder<Long, NewsModel> find = new Finder<Long, NewsModel>(NewsModel.class);
+
+  public static NewsModel findNewsById(Long id) {
+    return find.byId(id);
+  }
 
 }

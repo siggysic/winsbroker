@@ -7,6 +7,7 @@ create table news (
   id                            bigint auto_increment not null,
   topic                         varchar(255),
   content                       varchar(255),
+  image                         varchar(255),
   constraint pk_news primary key (id)
 );
 
@@ -21,6 +22,13 @@ create table test_one_to_many (
   id                            bigint auto_increment not null,
   name                          varchar(255),
   constraint pk_test_one_to_many primary key (id)
+);
+
+create table urls (
+  id                            bigint auto_increment not null,
+  token                         varchar(255),
+  time_verify                   varchar(255),
+  constraint pk_urls primary key (id)
 );
 
 create table users (
@@ -45,6 +53,8 @@ drop table if exists news;
 drop table if exists test_many_to_one;
 
 drop table if exists test_one_to_many;
+
+drop table if exists urls;
 
 drop table if exists users;
 

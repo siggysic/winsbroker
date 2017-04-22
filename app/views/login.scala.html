@@ -1,14 +1,5 @@
-@*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(errors: java.util.List[String])
+@(errors: java.util.List[String], username: String)
 
-@*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
 @scale("WINSBROKER LOGIN") {
   <div id="page">
     <div class="container-fluid bg-page">
@@ -18,7 +9,7 @@
           <div class="block-login">
             <div class="input-login">
               <p>Username / Email</p>
-              <input type="text" name="username" class="form-control user">
+              <input type="text" name="username" class="form-control user" value="@username">
             </div>
             <div class="input-login">
               <p>Password</p>
